@@ -1,14 +1,20 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
+
+import FitText from "./FitText";
 
 import fitstyles from "../config/fitstyles";
 
-function FitButton({ title, color = "primary", onPress }) {
+function FitButton({ title, color = "primary", onPress, style }) {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: fitstyles.colors[color] }]}
+      style={[
+        styles.button,
+        { backgroundColor: fitstyles.colors[color] },
+        style,
+      ]}
       onPress={onPress}
     >
-      <Text style={styles.text}>{title}</Text>
+      <FitText style={styles.text}>{title}</FitText>
     </TouchableOpacity>
   );
 }

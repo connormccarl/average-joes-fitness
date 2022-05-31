@@ -5,7 +5,7 @@ import colors from "./fitcolors";
 export default {
   colors,
   text: {
-    color: colors.primary,
+    color: colors.black,
     fontSize: 18,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },

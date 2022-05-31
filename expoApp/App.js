@@ -42,5 +42,5 @@ import FitProgressScreen from "./app/screens/FitProgressScreen";
 import FitWorkoutScreen from "./app/screens/FitWorkoutScreen";
 
 export default function App() {
-  return <FitWorkoutScreen />;
+  return <FitProgressScreen />;
 }

@@ -1,7 +1,8 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
+
 import FitCalendarBar from "../components/calendar/FitCalendarBar";
-import FitCalendarBarNav from "../components/calendar/FitCalendarBarNav";
+import FitButton from "../components/FitButton";
 import FitScreen from "../components/FitScreen";
 import FitWorkoutItem from "../components/FitWorkoutItem";
 
@@ -46,14 +47,35 @@ const workouts = [
 function FitWorkoutScreen(props) {
   return (
     <FitScreen image={require("../assets/fit-logo.png")}>
-      <FitCalendarBarNav />
+      <FitCalendarBar />
       <FlatList
         data={workouts}
         renderItem={({ item }) => <FitWorkoutItem item={item} />}
         keyExtractor={(item) => item.id.toString()}
+        style={styles.list}
       />
+      <View style={styles.buttons}>
+        <FitButton title="Swap" style={styles.button} />
+        <FitButton title="Done" style={styles.button} color="secondary" />
+      </View>
     </FitScreen>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  list: {
+    flexGrow: 0,
+    marginBottom: 10,
+  },
+});
 
 export default FitWorkoutScreen;
