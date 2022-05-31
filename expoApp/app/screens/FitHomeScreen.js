@@ -26,7 +26,7 @@ const workouts = [
   },
 ];
 
-function FitWorkoutsScreen(props) {
+function FitHomeScreen(props) {
   return (
     <FitScreen style={styles.screen}>
       <FlatList
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FitWorkoutsScreen;
+export default FitHomeScreen;

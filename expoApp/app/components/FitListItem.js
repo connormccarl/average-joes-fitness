@@ -33,12 +33,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: "row",
-    justifyContent: "space-around",
     padding: 20,
     backgroundColor: fitcolors.white,
   },
   detailsContainer: {
     justifyContent: "center",
+    flex: 1,
+    marginLeft: 15,
   },
   flagTitle: {
     paddingTop: 5,
