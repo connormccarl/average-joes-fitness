@@ -3,10 +3,12 @@ import Constants from "expo-constants";
 
 function FitScreen({ children, image }) {
   return (
-    <SafeAreaView style={styles.screen}>
-      {children}
-      <Image source={image} height={10} style={styles.image} />
-    </SafeAreaView>
+    <>
+      <SafeAreaView style={styles.screen}>
+        {children}
+        <Image source={image} height={10} style={styles.image} />
+      </SafeAreaView>
+    </>
   );
 }
 

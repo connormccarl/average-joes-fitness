@@ -62,6 +62,7 @@ function FitCalendarBar() {
         {dates.map((date, index) => {
           return (
             <FitCalendarBarDay
+              key={index}
               date={date}
               isSelected={selectedDate.day() === date.day() ? 1 : 0}
               inCurrentMonth={selectedDate.month() === date.month() ? 1 : 0}

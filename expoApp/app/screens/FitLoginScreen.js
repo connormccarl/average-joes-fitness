@@ -51,7 +51,7 @@ function FitLoginScreen(props) {
               error={errors.password}
               visible={touched.password}
             />
-            <FitButton title="Login" onPress={handleSubmit} />
+            <FitButton color="secondary" title="Login" onPress={handleSubmit} />
           </>
         )}
       </Formik>

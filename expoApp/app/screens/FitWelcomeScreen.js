@@ -5,7 +5,7 @@ import FitButton from "../components/FitButton";
 import FitLogo from "../components/FitLogo";
 import fitstyles from "../config/fitstyles";
 
-function FitWelcomeScreen(props) {
+function FitWelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
@@ -15,7 +15,11 @@ function FitWelcomeScreen(props) {
         <FitLogo title="Average Joe's Fitness" color="white" />
       </View>
       <View style={styles.buttonContainer}>
-        <FitButton title="Login" color="secondary" />
+        <FitButton
+          title="Login"
+          color="secondary"
+          onPress={() => navigation.navigate("Login")}
+        />
         <FitButton title="Register" />
       </View>
     </ImageBackground>
