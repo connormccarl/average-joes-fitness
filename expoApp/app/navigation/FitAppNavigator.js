@@ -61,6 +61,15 @@ const FitAppNavigator = () => (
         ),
       }}
     />
+    <Tab.Screen
+      name="Edit"
+      component={FitWorkoutEditScreen}
+      options={{
+        tabBarIcon: ({ size, color }) => (
+          <MaterialIcons name="bar-chart" size={size} color={color} />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );
 

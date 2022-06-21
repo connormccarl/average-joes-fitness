@@ -12,7 +12,7 @@ function FitListItem({ title, subTitle, flagTitle, image, onPress }) {
   return (
     <TouchableHighlight underlayColor={fitcolors.light} onPress={onPress}>
       <View style={styles.container}>
-        <Image style={styles.image} source={image} />
+        <Image style={styles.image} source={{ uri: image }} />
         <View style={styles.detailsContainer}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subTitle}>{subTitle}</Text>

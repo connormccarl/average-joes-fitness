@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
 import FitListItem from "../components/FitListItem";
 import {} from "@react-navigation/native";
@@ -5,8 +6,9 @@ import {} from "@react-navigation/native";
 import FitScreen from "../components/FitScreen";
 import fitcolors from "../config/fitcolors";
 import FitButton from "../components/FitButton";
+import workoutsApi from "../api/workouts";
 
-const workouts = [
+const workoutsOld = [
   {
     id: 1,
     title: "Thor Workout",
@@ -372,11 +374,24 @@ const workouts = [
 ];
 
 function FitHomeScreen({ navigation }) {
+  const [workouts, setWorkouts] = useState([]);
+
+  useEffect(() => {
+    loadWorkouts();
+  }, []);
+
+  const loadWorkouts = async () => {
+    console.log("loading workouts");
+    const response = await workoutsApi.getWorkouts();
+    setWorkouts(response.data);
+    console.log(response.data[0].listImage);
+  };
+
   return (
     <FitScreen style={styles.screen}>
       <FlatList
         data={workouts}
-        keyExtractor={(workout) => workout.id.toString()}
+        keyExtractor={(workout) => workout._id}
         renderItem={({ item }) => (
           <FitListItem
             title={item.title}

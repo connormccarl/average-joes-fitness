@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
 
 import FitCalendarBar from "../components/calendar/FitCalendarBar";
