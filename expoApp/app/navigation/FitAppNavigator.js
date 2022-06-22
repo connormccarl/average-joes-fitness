@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 const HomeNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="Home"
+      name="Main"
       component={FitHomeScreen}
       options={{ headerShown: false }}
     />

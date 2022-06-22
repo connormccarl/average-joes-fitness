@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, TouchableHighlight } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TouchableHighlight, View } from "react-native";
 import * as Yup from "yup";
 import { Formik, Form, FieldArray } from "formik";
 
@@ -43,9 +43,38 @@ const initialValues = {
   ],
 };
 
-function ListingEditScreen(props) {
-  const [days, setDays] = useState([]);
+const daysOfTheWeek = [
+  {
+    name: "Sun",
+    used: false,
+  },
+  {
+    name: "Mon",
+    used: false,
+  },
+  {
+    name: "Tue",
+    used: false,
+  },
+  {
+    name: "Wed",
+    used: false,
+  },
+  {
+    name: "Thu",
+    used: false,
+  },
+  {
+    name: "Fri",
+    used: false,
+  },
+  {
+    name: "Sat",
+    used: false,
+  },
+];
 
+function ListingEditScreen(props) {
   return (
     <FitScreen style={styles.container}>
       <Formik
@@ -54,81 +83,40 @@ function ListingEditScreen(props) {
         onSubmit={onSubmit}
       >
         {({ errors, values, touched, setValues }) => (
-          <Form>
+          <>
             <FitButton style="secondary" title="Delete" />
             <FitButton style="secondary" title="Save" />
             <FitTextInput name="workoutName" />
             <FitTextInput name="workoutDesc" />
             <FieldArray name="days">
-              {values.days.length > 0 &&
-                values.days.map((day, index) => (
-                  <View>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                      style={({ pressed }) => {
-                        pressed ? pressedDayOfWeek : {};
-                      }}
-                    >
-                      <FitText>Sun</FitText>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                    >
-                      <FitText>Mon</FitText>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                    >
-                      <FitText>Tue</FitText>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                    >
-                      <FitText>Wed</FitText>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                    >
-                      <FitText>Thu</FitText>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                    >
-                      <FitText>Fri</FitText>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                      onPress={() => console.log("text pressed")}
-                    >
-                      <FitText>Sat</FitText>
-                    </TouchableHighlight>
-                  </View>
-                ))}
+              <View>
+                {values.days.length > 0 &&
+                  values.days.map((day, index) =>
+                    daysOfTheWeek.map((dayOfTheWeek) => (
+                      <View>
+                        <TouchableHighlight
+                          onPress={() =>
+                            (daysOfTheWeek[dayOfTheWeek].used = true)
+                          }
+                        >
+                          <FitText
+                            style={{
+                              color: dayOfTheWeek.used
+                                ? fitcolors.secondary
+                                : "",
+                            }}
+                          >
+                            {dayOfTheWeek.name}
+                          </FitText>
+                        </TouchableHighlight>
+                      </View>
+                    ))
+                  )}
+              </View>
             </FieldArray>
-
-            <FitText></FitText>
-          </Form>
+          </>
         )}
       </Formik>
-      {/* <FitAppForm
-        initialValues={{
-          workoutName: "",
-          workoutDesc: "",
-        }}
-        onSubmit={(values) => console.log(values)}
-        validationSchema={validationSchema}
-      >
-        <FitAppFormField
-          maxLength={255}
-          name="workoutName"
-          placeholder="Workout Name"
-        />
-        <FitAppFormField
-          maxLength={255}
-          name="workoutDesc"
-          placeholder="Workout Description"
-        />
-        <FitSubmitButton title="Add Day" />
-      </FitAppForm> */}
     </FitScreen>
   );
 }
@@ -137,8 +125,18 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
-  pressedDayOfWeek: {
-    color: fitcolors.secondary,
+  btnNormal: {
+    borderColor: "blue",
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 30,
+    width: 100,
+  },
+  btnPress: {
+    borderColor: "blue",
+    borderWidth: 1,
+    height: 30,
+    width: 100,
   },
 });
 

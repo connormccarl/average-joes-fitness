@@ -383,8 +383,9 @@ function FitHomeScreen({ navigation }) {
   const loadWorkouts = async () => {
     console.log("loading workouts");
     const response = await workoutsApi.getWorkouts();
-    setWorkouts(response.data);
-    console.log(response.data[0].listImage);
+    if (response.ok) {
+      setWorkouts(response.data);
+    }
   };
 
   return (
